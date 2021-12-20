@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">AndroidSample</string>
+    <string name="welcome_message">Welcome to the Metro Signature App, easily send your e-signature by entering the code provided by MetroIPO and then signing.</string>
+    <string name="enter_button">Submit Verification Code</string>
+</resources>

@@ -1,0 +1,13 @@
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        jcenter() // Warning: this repository is going to shut down soon
+    }
+}
+rootProject.name = "AndroidSample"
+include ':metroipo-sdk'
+project(':metroipo-sdk').projectDir = new File('/Users/luechen/Documents/Projects/metrosdk/sdk/android/metroipo-sdk')
+include ':app'
+
