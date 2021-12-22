@@ -15,7 +15,7 @@ Then add the following dependency to your app build.gradle file. You should repl
 ```gradle
 dependencies {
     ...
-    implementation 'com.metroipo:sdk:+'
+    implementation 'com.metroipo:metro-ipo-sdk:+'
 }
 ```
 
