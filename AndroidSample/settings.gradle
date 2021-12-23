@@ -7,7 +7,5 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "AndroidSample"
-include ':metroipo-sdk'
-project(':metroipo-sdk').projectDir = new File('/Users/luechen/Documents/Projects/metrosdk/sdk/android/metroipo-sdk')
 include ':app'
 
