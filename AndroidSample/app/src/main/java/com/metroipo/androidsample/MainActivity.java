@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             String mCode = mCodeField.getText().toString();
             MetroIpoSdk sdk =
-                    new MetroIpoSdk.Builder().setCode(mCode).setDomain("https://admin.metroipo.com").create();
+                    new MetroIpoSdk.Builder().setCode(mCode).setDomain("METROIPO-SERVER").create();
             sdk.start(this);
             sdk.onStart(new MetroIpoSdk.Response() {
                 @Override

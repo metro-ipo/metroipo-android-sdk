@@ -31,7 +31,7 @@ import com.metroipo.sdk.MetroIpoSdk;
 String mCode = codeTextField.getText().toString();
 MetroIpoSdk sdk = new MetroIpoSdk sdk = new MetroIpoSdk.Builder()
   .setCode(mCode) // VERIFICATION CODE
-  .setDomain("https://admin.metroipo.com") // METRO IPO DOMAIN
+  .setDomain("METROIPO-SERVER") // METRO IPO DOMAIN
   .create();
 sdk.start(this);
 ```
