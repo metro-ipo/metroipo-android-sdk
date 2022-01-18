@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
             sdk.onComplete(new MetroIpoSdk.Callback() {
                 @Override
                 public void execute() {
+                    mCodeField.setText("");
                     showAlert("Congratulations", "You have successfully added your signature.");
                 }
             });
