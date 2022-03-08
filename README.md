@@ -28,12 +28,11 @@ The Metro IPO SDK can be initialized by supplying the `domain name` of the websi
 ```java
 import com.metroipo.sdk.MetroIpoSdk;
 
-String mCode = codeTextField.getText().toString();
+String mCode = codeTextField.getText().toString(); // VERIFICATION CODE
 MetroIpoSdk sdk = new MetroIpoSdk sdk = new MetroIpoSdk.Builder()
-  .setCode(mCode) // VERIFICATION CODE
-  .setDomain("METROIPO-SERVER") // METRO IPO DOMAIN
+  .setDomain("METROIPO-SERVER") //  // Domain/Hostname should be added without "https://" or trailing slash e.g metroipo.com
   .create();
-sdk.start(this);
+sdk.start(mCode,this);
 ```
 
 ## 3. Handling Callbacks  
