@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     private AlertDialog mDialog;
     private EditText mCodeField;
     private Button mSubmitButton;
-
+    private MetroIpoSdk metroSdk;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,15 +28,18 @@ public class MainActivity extends AppCompatActivity {
                 next();
             }
         });
+        try {
+            metroSdk = new MetroIpoSdk.Builder().setDomain("METROIPO-SERVER").create();
+        }catch (IllegalStateException e) {
+            showAlert("Error", e.getLocalizedMessage());
+        }
     }
 
     private void next() {
         try {
             String mCode = mCodeField.getText().toString();
-            MetroIpoSdk sdk =
-                    new MetroIpoSdk.Builder().setCode(mCode).setDomain("METROIPO-SERVER").create();
-            sdk.start(this);
-            sdk.onStart(new MetroIpoSdk.Response() {
+            metroSdk.start(mCode, this);
+            metroSdk.onStart(new MetroIpoSdk.Response() {
                 @Override
                 public void onSuccess() {
                     Log.i("MetroSDK", "Sdk started.");
@@ -47,20 +50,21 @@ public class MainActivity extends AppCompatActivity {
                     showAlert("Error", message);
                 }
             });
-            sdk.onComplete(new MetroIpoSdk.Callback() {
+            metroSdk.onComplete(new MetroIpoSdk.Callback() {
                 @Override
                 public void execute() {
                     mCodeField.setText("");
                     showAlert("Congratulations", "You have successfully added your signature.");
                 }
             });
-            sdk.onCancel(new MetroIpoSdk.Callback() {
+            metroSdk.onCancel(new MetroIpoSdk.Callback() {
                 @Override
                 public void execute() {
                     Log.i("MetroSDK", "Metro IPO Sdk encountered an error.");
                 }
             });
         } catch (Exception e) {
+            showAlert("Error", e.getLocalizedMessage());
         }
     }
 
