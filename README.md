@@ -11,11 +11,11 @@ repositories {
 }
 ```
 
-Then add the following dependency to your app build.gradle file. You should replace the `+` with your desired version of the SDK.
+Then add the following dependency to your app build.gradle file.
 ```gradle
 dependencies {
     ...
-    implementation 'com.metroipo:metro-ipo-sdk:+'
+    implementation 'com.metroipo:metro-ipo-sdk:0.0.4'
 }
 ```
 
@@ -23,15 +23,18 @@ Now sync your build gradle to install the sdk.
 
 ## 2. Initializing the SDK
 
-The Metro IPO SDK can be initialized by supplying the `domain name` of the website that hosts Metro IPO and the user captured `verification code`. A sample implementation is shown below.
+The Metro IPO SDK can be initialized by supplying the `DOMAIN NAME` of the website that hosts the Metro IPO admin dashboard. After this, starting the SDK requires the user entered `VERIFICATION CODE`. A sample implementation is shown below.
 
 ```java
 import com.metroipo.sdk.MetroIpoSdk;
 
-String mCode = codeTextField.getText().toString(); // VERIFICATION CODE
-MetroIpoSdk sdk = new MetroIpoSdk sdk = new MetroIpoSdk.Builder()
-  .setDomain("METROIPO-SERVER") //  // Domain/Hostname should be added without "https://" or trailing slash e.g metroipo.com
+// Initialize the SDK
+MetroIpoSdk sdk = new MetroIpoSdk.Builder()
+  .setDomain("METROIPO-ADMIN-SERVER") //  // Domain/Hostname should be added without "https://" or trailing slash e.g admin.metroipo.com
   .create();
+
+// Pass verification code to SDK
+String mCode = codeTextField.getText().toString(); // VERIFICATION CODE
 sdk.start(mCode,this);
 ```
 
@@ -39,18 +42,6 @@ sdk.start(mCode,this);
 The Metro IPO Sdk exposes two callbacks in order to let you know if the user has completed or cancelled the signature capture flow. A third callback (onStart) is also supplied to alert you if the user has successfully began the flow.
 
 ```java
-sdk.onStart(new MetroIpoSdk.Response() {
-    @Override
-    public void onSuccess() {
-        // Sdk started successfully
-    }
-
-    @Override
-    public void onFailure(String message) {
-        // Code verification failed 
-    }
-});
-
 sdk.onComplete(new MetroIpoSdk.Callback() {
     @Override
     public void execute() {
@@ -62,6 +53,18 @@ sdk.onCancel(new MetroIpoSdk.Callback() {
     @Override
     public void execute() {
         // Signature upload cancelled by the user.
+    }
+});
+
+sdk.onStart(new MetroIpoSdk.Response() {
+    @Override
+    public void onSuccess() {
+        // Sdk started successfully
+    }
+
+    @Override
+    public void onFailure(String message) {
+        // Code verification failed 
     }
 });
 ```
