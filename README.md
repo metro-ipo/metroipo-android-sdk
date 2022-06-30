@@ -15,7 +15,7 @@ Then add the following dependency to your app build.gradle file.
 ```gradle
 dependencies {
     ...
-    implementation 'com.metroipo:metro-ipo-sdk:0.0.4'
+    implementation 'com.metroipo:metro-ipo-sdk:0.0.5'
 }
 ```
 
@@ -69,7 +69,8 @@ sdk.onStart(new MetroIpoSdk.Response() {
 });
 ```
 
-## 6. Customizing the Theme  
+## 6. Customizing the Theme 
+### Colors
 To ensure that the Metro IPO SDK fits in to your app's existing user experience, you can customize various colors by overriding the following in your ``colors.xml`` file.
 
 ```metroColorPrimary```: Defines the background color of the Toolbar.\
@@ -77,6 +78,17 @@ To ensure that the Metro IPO SDK fits in to your app's existing user experience,
 ```metroColorButtonPrimary```: Defines the background color of Primary Buttons and the text color of Secondary Buttons.\
 ```metroColorButtonPrimaryText```: Defines the text color of Primary Buttons.\
 ```metroColorButtonPrimaryPressed```: Defines the background color of Primary Buttons when pressed.
+
+### Buttons
+You can also override the corner radius of buttons by specifying the new button with in your ``dimens.xml`` file using `metro_sdk_button_corner_radius`.
+
+### Branding
+You are also able to customize a number of images, **using drawables**, on the signature pad view: 
+
+```metro_sdk_logo_center```: Adds an image to the center of the navigation bar.\
+```metro_sdk_logo_right```: Adds an image to the right of the navigation bar.\
+```metro_sdk_logo_bottom```: Adds an image to the between the clear and submit buttons.\
+```metro_sdk_nav_background```: Adds a background image to the navigation bar. A color can also be specified.
 
 ## Sample App
 A sample app demonstrating the Orba One SDK's implementation has been included. See the [AndroidSample directory](https://github.com/metro-ipo/metroipo-android-sdk/tree/master/AndroidSample) for the Android - Java implementation.
